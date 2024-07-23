@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Data;
 
 public class CalculationFormula : MonoBehaviour
 {
@@ -49,6 +50,44 @@ public class CalculationFormula : MonoBehaviour
     {
         ResetNumberFrames();
         _fillNumberFrames = 0;
+    }
+
+    public void CalculateNumber()
+    {
+        if (_fillNumberFrames != _numberFramesCount) return;
+
+        string cal = "";
+        int frameCount = 0;
+        int calCount = 0;
+
+        for (int i = 0; i < _numberFramesCount + _calculationsCount; i++)
+        {
+            if(i % 2 == 0)
+            {
+                cal += _numberFrames.transform.GetChild(frameCount).GetChild(0).GetComponent<TextMeshProUGUI>().text;
+                frameCount++;
+            }
+            else
+            {
+                cal += _calculations.transform.GetChild(calCount).GetChild(0).GetComponent<TextMeshProUGUI>().text;
+                calCount++;
+            }
+        }
+
+        string newCal = cal.Replace("×", "*");
+        string newCal2 = newCal.Replace("÷", "/");
+        float result = Evaluate(newCal2);
+        Debug.Log("계산 결과 : " + result);
+    }
+
+    private float Evaluate(string expression)
+    {
+        DataTable table = new DataTable();
+        table.Columns.Add("expression", typeof(string), expression);
+        DataRow row = table.NewRow();
+        table.Rows.Add(row);
+        float result = float.Parse((string)row["expression"]);
+        return result;
     }
 
     private void RandomCalculations()

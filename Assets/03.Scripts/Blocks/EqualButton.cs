@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class EqualButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] GameObject _calculationFormulaes;
+    private CalculationFormula _calculationFormula;
 
-    // Update is called once per frame
-    void Update()
+    public void EqualNumberButton()
     {
-        
+        for (int i = 0; i < _calculationFormulaes.transform.childCount; i++)
+        {
+            if (_calculationFormulaes.transform.GetChild(i).gameObject.activeSelf)
+            {
+                _calculationFormula = _calculationFormulaes.transform.GetChild(i).GetComponent<CalculationFormula>();
+                break;
+            }
+        }
+
+        _calculationFormula.CalculateNumber();
     }
 }
