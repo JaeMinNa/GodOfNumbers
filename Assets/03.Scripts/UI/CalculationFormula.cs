@@ -11,6 +11,12 @@ public class CalculationFormula : MonoBehaviour
     private int _numberFramesCount;
     private int _calculationsCount;
     private int _fillNumberFrames;
+    private GameController _gameController;
+
+    private void Awake()
+    {
+        _gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+    }
 
     private void OnEnable()
     {
@@ -78,6 +84,16 @@ public class CalculationFormula : MonoBehaviour
         string newCal2 = newCal.Replace("÷", "/");
         float result = Evaluate(newCal2);
         Debug.Log("계산 결과 : " + result);
+
+        if(_gameController.Blocks.ContainsKey(result))
+        {
+            GameObject obj = _gameController.Blocks[result];
+            Destroy(obj);
+            _gameController.GetScore(_numberFramesCount * 100);
+            _gameController.Blocks.Remove(result);
+            _gameController.SetactiveCalculationFormula();
+        }
+        else ClearNumber();
     }
 
     private float Evaluate(string expression)
