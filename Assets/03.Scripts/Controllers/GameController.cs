@@ -15,7 +15,6 @@ public class GameController : MonoBehaviour
 
     [Header("Block")]
     public Dictionary<float, GameObject> Blocks;
-    public GameObject BlockPrefab;
     public float BlockCreateTime;
 
     private void Awake()
@@ -69,7 +68,7 @@ public class GameController : MonoBehaviour
             else
             {
                 float value = Random.Range(-2f, 2f);
-                GameObject obj = Instantiate(BlockPrefab, new Vector3(value, 5.2f, 0), Quaternion.identity);
+                GameObject obj =  GameManager.I.ObjectPoolManager.CreateBlock("Block0", new Vector3(value, 5.2f, 0));
                 obj.GetComponent<Block>().SetBlockNumber(num);
                 Blocks.Add(num, obj);
                 break;

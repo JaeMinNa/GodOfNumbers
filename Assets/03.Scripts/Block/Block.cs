@@ -50,7 +50,7 @@ public class Block : MonoBehaviour
         {
             _gameController.Blocks.Remove(Number);
             _gameController.LoseHp(1);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

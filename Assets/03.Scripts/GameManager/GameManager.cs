@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     // GameManager은 Manager을 관리하는 하나의 역할만 함
     public DataManager DataManager { get; private set; }
     public SoundManager SoundManager { get; private set; }
+    public ObjectPoolManager ObjectPoolManager { get; private set; }
 
     public static GameManager I;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
 
         DataManager = GetComponentInChildren<DataManager>();
         SoundManager = GetComponentInChildren<SoundManager>();
+        ObjectPoolManager = GetComponentInChildren<ObjectPoolManager>();
 
         Init();
     }
@@ -27,11 +29,13 @@ public class GameManager : MonoBehaviour
     {
         DataManager.Init();
         SoundManager.Init();
+        ObjectPoolManager.Init();
     }
 
     private void Release()
     {
         DataManager.Release();
         SoundManager.Release();
+        ObjectPoolManager.Release();
     }
 }

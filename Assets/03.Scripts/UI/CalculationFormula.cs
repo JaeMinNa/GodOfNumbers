@@ -88,7 +88,7 @@ public class CalculationFormula : MonoBehaviour
         if(_gameController.Blocks.ContainsKey(result))
         {
             GameObject obj = _gameController.Blocks[result];
-            Destroy(obj);
+            obj.SetActive(false);
             _gameController.GetScore(_numberFramesCount * 100);
             _gameController.Blocks.Remove(result);
             _gameController.SetactiveCalculationFormula();
