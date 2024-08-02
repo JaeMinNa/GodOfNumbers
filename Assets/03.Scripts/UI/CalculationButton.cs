@@ -16,6 +16,8 @@ public class CalculationButton : MonoBehaviour
 
     public void NumberButton()
     {
+        GameManager.I.SoundManager.StartSFX("ClickButton");
+
         for (int i = 0; i < _calculationFormulaes.transform.childCount; i++)
         {
             if(_calculationFormulaes.transform.GetChild(i).gameObject.activeSelf)

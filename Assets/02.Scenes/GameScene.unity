@@ -2618,7 +2618,6 @@ Transform:
   m_Children:
   - {fileID: 1623164196}
   - {fileID: 1579076914}
-  - {fileID: 546196990}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &371345636
@@ -3712,8 +3711,8 @@ GameObject:
   - component: {fileID: 546196992}
   - component: {fileID: 546196991}
   m_Layer: 0
-  m_Name: ObjectPoolManager
-  m_TagString: Untagged
+  m_Name: ObjectPoolController
+  m_TagString: ObjectPool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3726,12 +3725,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546196989}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 366480353}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &546196991
 MonoBehaviour:
@@ -3749,6 +3748,18 @@ MonoBehaviour:
   - Tag: Block0
     Prefab: {fileID: 4711345000442417975, guid: 6ef4a0df0c9c6e24fa0fb31382d59fa6, type: 3}
     Size: 20
+  - Tag: Block0_Rotation
+    Prefab: {fileID: 4711345000442417975, guid: 40a0384a1c7fee147bb6f0285f3082bd, type: 3}
+    Size: 10
+  - Tag: Block1
+    Prefab: {fileID: 4711345000442417975, guid: 04b1a8b6b447d934ab5af7dc4c833250, type: 3}
+    Size: 10
+  - Tag: Block1_Rotation
+    Prefab: {fileID: 4711345000442417975, guid: 0a5a28aaf1cd9fb40810da929fac0838, type: 3}
+    Size: 10
+  - Tag: BlockBoss
+    Prefab: {fileID: 4711345000442417975, guid: 78702f4f32d090a4b8bfecb4007112ff, type: 3}
+    Size: 10
 --- !u!114 &546196992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10231,6 +10242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _calculationFormulaes: {fileID: 1937223076}
+  MaxNumber: 0
   _hpText: {fileID: 1459560942}
   _scoreText: {fileID: 222232277}
   BlockCreateTime: 10
@@ -10850,7 +10862,7 @@ MonoBehaviour:
   - {fileID: 1691402375}
   - {fileID: 1825065216}
   - {fileID: 1415677897}
-  StartVolume: 0.1
+  StartVolume: 0.85
 --- !u!1 &1579107282
 GameObject:
   m_ObjectHideFlags: 0
@@ -14158,6 +14170,7 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1887460250}
   - {fileID: 313409058}
-  - {fileID: 1486963193}
   - {fileID: 366480353}
   - {fileID: 1533071089}
+  - {fileID: 546196990}
+  - {fileID: 1486963193}

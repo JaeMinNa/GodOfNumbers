@@ -60,7 +60,11 @@ public class CalculationFormula : MonoBehaviour
 
     public void CalculateNumber()
     {
-        if (_fillNumberFrames != _numberFramesCount) return;
+        if (_fillNumberFrames != _numberFramesCount)
+        {
+            GameManager.I.SoundManager.StartSFX("MissButton");
+            return;
+        }
 
         string cal = "";
         int frameCount = 0;
@@ -85,15 +89,21 @@ public class CalculationFormula : MonoBehaviour
         float result = Evaluate(newCal2);
         Debug.Log("계산 결과 : " + result);
 
-        if(_gameController.Blocks.ContainsKey(result))
+        if (_gameController.Blocks.ContainsKey(result))
         {
+            GameManager.I.SoundManager.StartSFX("SuccessButton");
             GameObject obj = _gameController.Blocks[result];
-            obj.SetActive(false);
+            //obj.SetActive(false);
+            obj.GetComponent<Block>().ReduceHp();
             _gameController.GetScore(_numberFramesCount * 100);
             _gameController.Blocks.Remove(result);
             _gameController.SetactiveCalculationFormula();
         }
-        else ClearNumber();
+        else
+        {
+            GameManager.I.SoundManager.StartSFX("FailButton");
+            ClearNumber();
+        }
     }
 
     private float Evaluate(string expression)

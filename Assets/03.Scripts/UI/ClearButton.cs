@@ -9,6 +9,8 @@ public class ClearButton : MonoBehaviour
 
     public void ClearNumberButton()
     {
+        GameManager.I.SoundManager.StartSFX("ClickButton");
+
         for (int i = 0; i < _calculationFormulaes.transform.childCount; i++)
         {
             if (_calculationFormulaes.transform.GetChild(i).gameObject.activeSelf)

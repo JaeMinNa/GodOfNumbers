@@ -36,7 +36,11 @@ public class SoundManager : MonoBehaviour
         // BGM
 
         // SFX
-        _sfx.Add("PlayerGun", Resources.Load<AudioClip>("Sound/SFX/SFX_Assault Single Shot"));
+        _sfx.Add("DestroyLine", Resources.Load<AudioClip>("Sound/SFX/Block/DestroyLine"));
+        _sfx.Add("ClickButton", Resources.Load<AudioClip>("Sound/SFX/UI/ClickButton"));
+        _sfx.Add("FailButton", Resources.Load<AudioClip>("Sound/SFX/UI/FailButton"));
+        _sfx.Add("SuccessButton", Resources.Load<AudioClip>("Sound/SFX/UI/SuccessButton"));
+        _sfx.Add("MissButton", Resources.Load<AudioClip>("Sound/SFX/UI/MissButton"));
     }
 
     // 메모리 해제

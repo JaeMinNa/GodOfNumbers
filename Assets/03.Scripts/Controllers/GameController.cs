@@ -6,8 +6,10 @@ using TMPro;
 public class GameController : MonoBehaviour
 {
     [SerializeField] GameObject _calculationFormulaes;
+    private ObjectPoolController _objectPool;
 
     [Header("GameData")]
+    public int MaxNumber;
     [SerializeField] private TMP_Text _hpText;
     [SerializeField] private TMP_Text _scoreText;
     private int _hp;
@@ -20,6 +22,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Blocks = new Dictionary<float, GameObject>();
+        _objectPool = GameObject.FindWithTag("ObjectPool").GetComponent<ObjectPoolController>();
     }
 
     private void Start()
@@ -30,6 +33,12 @@ public class GameController : MonoBehaviour
         _hp = 3;
         GetScore(0);
         LoseHp(0);
+    }
+
+    private void Update()
+    {
+        if (_score < 4000) MaxNumber = 10;
+        else MaxNumber = 50;
     }
 
 
@@ -51,9 +60,11 @@ public class GameController : MonoBehaviour
     #region Block
     IEnumerator COCreateBlock()
     {
+        yield return new WaitForSeconds(0.5f);
+
         while (true)
         {
-            CreateBlock(10);
+            CreateBlock(MaxNumber);
 
             yield return new WaitForSeconds(BlockCreateTime);
         }
@@ -68,12 +79,23 @@ public class GameController : MonoBehaviour
             else
             {
                 float value = Random.Range(-2f, 2f);
-                GameObject obj =  GameManager.I.ObjectPoolManager.CreateBlock("Block0", new Vector3(value, 5.2f, 0));
+                GameObject obj = _objectPool.CreateBlock(RandomBlockName(), new Vector3(value, 5.2f, 0));
                 obj.GetComponent<Block>().SetBlockNumber(num);
                 Blocks.Add(num, obj);
                 break;
             }
         }
+    }
+
+    private string RandomBlockName()
+    {
+        int value = Random.Range(1, 101);
+
+        if (value >= 81 && value <= 85) return "Block1";
+        else if (value >= 86 && value <= 90) return "Block0_Rotation";
+        else if (value >= 91 && value <= 95) return "Block1_Rotation";
+        else if (value >= 96 && value <= 100) return "BlockBoss";
+        else return "Block0";
     }
     #endregion
 
