@@ -93,7 +93,6 @@ public class CalculationFormula : MonoBehaviour
         {
             GameManager.I.SoundManager.StartSFX("SuccessButton");
             GameObject obj = _gameController.Blocks[result];
-            //obj.SetActive(false);
             obj.GetComponent<Block>().ReduceHp();
             _gameController.GetScore(_numberFramesCount * 100);
             _gameController.Blocks.Remove(result);

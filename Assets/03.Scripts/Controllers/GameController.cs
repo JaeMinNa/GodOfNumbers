@@ -38,9 +38,8 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         if (_score < 4000) MaxNumber = 10;
-        else MaxNumber = 50;
+        else MaxNumber = 15;
     }
-
 
     #region CalculationFormula
     public void SetactiveCalculationFormula()
@@ -110,6 +109,14 @@ public class GameController : MonoBehaviour
     {
         Hp += value;
         _hpText.text = "HP : " + Hp + " / 3";
+    }
+    #endregion
+
+    #region GameTime
+    public IEnumerator CORestoreTime()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        Time.timeScale = 1f;
     }
     #endregion
 }
