@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour
     public int MaxNumber;
     [SerializeField] private TMP_Text _hpText;
     [SerializeField] private TMP_Text _scoreText;
-    private int _hp;
+    [HideInInspector] public int Hp;
     private int _score;
 
     [Header("Block")]
@@ -30,9 +30,9 @@ public class GameController : MonoBehaviour
         SetactiveCalculationFormula();
         StartCoroutine(COCreateBlock());
         _score = 0;
-        _hp = 3;
+        Hp = 3;
         GetScore(0);
-        LoseHp(0);
+        GetHp(0);
     }
 
     private void Update()
@@ -106,10 +106,10 @@ public class GameController : MonoBehaviour
         _scoreText.text = "Score : " + _score;
     }
 
-    public void LoseHp(int value)
+    public void GetHp(int value)
     {
-        _hp -= value;
-        _hpText.text = "HP : " + _hp + " / 3";
+        Hp += value;
+        _hpText.text = "HP : " + Hp + " / 3";
     }
     #endregion
 }

@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 7873992588685139154}
   m_Layer: 0
   m_Name: Block1
-  m_TagString: Untagged
+  m_TagString: Block
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,7 +356,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d061530d4e155746b12ba57ce9e4c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseHp: 0
   Number: 10
+  Hp: 0
   VerticalSpeed: 0.2
   HorizontalSpeed: 0.5
 --- !u!50 &5830554186561993352
