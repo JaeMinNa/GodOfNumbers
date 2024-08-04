@@ -41,6 +41,7 @@ public class SoundManager : MonoBehaviour
         _sfx.Add("FailButton", Resources.Load<AudioClip>("Sound/SFX/UI/FailButton"));
         _sfx.Add("SuccessButton", Resources.Load<AudioClip>("Sound/SFX/UI/SuccessButton"));
         _sfx.Add("MissButton", Resources.Load<AudioClip>("Sound/SFX/UI/MissButton"));
+        _sfx.Add("ChangeButton", Resources.Load<AudioClip>("Sound/SFX/UI/ChangeButton"));
     }
 
     // 메모리 해제

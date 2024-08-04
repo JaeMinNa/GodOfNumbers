@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public int MaxNumber;
     [SerializeField] private TMP_Text _hpText;
     [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private TMP_Text[] _changeCountText;
     [HideInInspector] public int Hp;
     [HideInInspector] public int ChangeCount;
     private int _score;
@@ -113,6 +114,16 @@ public class GameController : MonoBehaviour
     {
         Hp += value;
         _hpText.text = "HP : " + Hp + " / 3";
+    }
+
+    public void GetChangeCount(int value)
+    {
+        ChangeCount += value;
+
+        for (int i = 0; i < _changeCountText.Length; i++)
+        {
+            _changeCountText[i].text = ChangeCount + "/2";
+        }
     }
     #endregion
 

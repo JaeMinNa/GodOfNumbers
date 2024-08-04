@@ -15,8 +15,10 @@ public class ChangeButton : MonoBehaviour
     {
         if(_gameController.ChangeCount > 0)
         {
-            _gameController.ChangeCount--;
+            GameManager.I.SoundManager.StartSFX("ChangeButton");
+            _gameController.GetChangeCount(-1);
             _gameController.SetactiveCalculationFormula();
         }
+        else GameManager.I.SoundManager.StartSFX("MissButton");
     }
 }

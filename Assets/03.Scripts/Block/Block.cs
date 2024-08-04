@@ -11,6 +11,7 @@ public class Block : MonoBehaviour
         Hp,
         Time,
         Destroy,
+        Change,
     }
 
     public Item ItemType;
@@ -184,6 +185,10 @@ public class Block : MonoBehaviour
                 }
                 else continue;
             }
+        }
+        else if (ItemType == Item.Change)
+        {
+            if (_gameController.ChangeCount < 2) _gameController.GetChangeCount(1);
         }
     }
     #endregion

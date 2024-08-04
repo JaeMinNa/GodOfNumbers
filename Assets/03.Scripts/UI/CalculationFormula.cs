@@ -12,12 +12,12 @@ public class CalculationFormula : MonoBehaviour
     private int _calculationsCount;
     private int _fillNumberFrames;
     private GameController _gameController;
-    private TMP_Text _changeCountText;
+    //private TMP_Text _changeCountText;
 
     private void Awake()
     {
         _gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
-        _changeCountText = transform.GetChild(2).GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>();
+        //_changeCountText = transform.GetChild(2).GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>();
     }
 
     private void OnEnable()
@@ -25,7 +25,7 @@ public class CalculationFormula : MonoBehaviour
         if (_numberFramesCount == 0) return;
 
         _fillNumberFrames = 0;
-        _changeCountText.text = _gameController.ChangeCount + "/2";
+        _gameController.GetChangeCount(0);
         ResetNumberFrames();
         RandomCalculations();
     }
