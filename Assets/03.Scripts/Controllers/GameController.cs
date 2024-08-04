@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private TMP_Text _hpText;
     [SerializeField] private TMP_Text _scoreText;
     [HideInInspector] public int Hp;
+    [HideInInspector] public int ChangeCount;
     private int _score;
 
     [Header("Block")]
@@ -23,6 +24,7 @@ public class GameController : MonoBehaviour
     {
         Blocks = new Dictionary<float, GameObject>();
         _objectPool = GameObject.FindWithTag("ObjectPool").GetComponent<ObjectPoolController>();
+        ChangeCount = 2;
     }
 
     private void Start()
@@ -50,7 +52,7 @@ public class GameController : MonoBehaviour
         }
 
         int index = 0;
-        if(_score <= 5000) index = Random.Range(0, 1);
+        if(_score <= 100000) index = Random.Range(0, 1);
 
         _calculationFormulaes.transform.GetChild(index).gameObject.SetActive(true);
     }
