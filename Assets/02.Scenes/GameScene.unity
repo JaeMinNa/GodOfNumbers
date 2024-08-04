@@ -10246,7 +10246,7 @@ MonoBehaviour:
   _hpText: {fileID: 1459560942}
   _scoreText: {fileID: 222232277}
   Hp: 0
-  BlockCreateTime: 5
+  BlockCreateTime: 10
 --- !u!1 &1491138568
 GameObject:
   m_ObjectHideFlags: 0

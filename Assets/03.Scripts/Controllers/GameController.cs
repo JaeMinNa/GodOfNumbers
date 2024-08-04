@@ -60,9 +60,11 @@ public class GameController : MonoBehaviour
     IEnumerator COCreateBlock()
     {
         yield return new WaitForSeconds(0.5f);
+        
 
         while (true)
         {
+            if (Blocks.Count >= MaxNumber + 1) continue;
             CreateBlock(MaxNumber);
 
             yield return new WaitForSeconds(BlockCreateTime);

@@ -66,7 +66,7 @@ public class Block : MonoBehaviour
         if (Hp == 0 && !_isDestroy)
         {
             _isDestroy = true;
-            DestroySucces();
+            DestroySuccess();
         }
     }
 
@@ -94,8 +94,9 @@ public class Block : MonoBehaviour
     #endregion
 
     #region Destroy
-    private void DestroySucces()
+    private void DestroySuccess()
     {
+        _gameController.Blocks.Remove(Number);
         ItemAbility();
 
         if (ItemType == Item.Time)
@@ -178,8 +179,7 @@ public class Block : MonoBehaviour
 
                 if (_gameController.Blocks.ContainsKey(num))
                 {
-                    _gameController.Blocks[num].SetActive(false);
-                    _gameController.Blocks.Remove(num);
+                    _gameController.Blocks[num].GetComponent<Block>().ReduceHp();
                     break;
                 }
                 else continue;

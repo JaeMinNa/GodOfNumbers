@@ -95,7 +95,7 @@ public class CalculationFormula : MonoBehaviour
             GameObject obj = _gameController.Blocks[result];
             obj.GetComponent<Block>().ReduceHp();
             _gameController.GetScore(_numberFramesCount * 100);
-            _gameController.Blocks.Remove(result);
+            //_gameController.Blocks.Remove(result);
             _gameController.SetactiveCalculationFormula();
         }
         else
