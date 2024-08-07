@@ -10,11 +10,13 @@ public class LobbyController : MonoBehaviour
     #region Inventory
     public void InventroyActive()
     {
+        GameManager.I.SoundManager.StartSFX("ChangeButton");
         _inventory.SetActive(true);
     }
 
     public void InventroyInActive()
     {
+        GameManager.I.SoundManager.StartSFX("ClickButton");
         _inventory.SetActive(false);
     }
     #endregion

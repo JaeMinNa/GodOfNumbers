@@ -247,9 +247,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CalculationButton, Assembly-CSharp
-        m_MethodName: NumberButton
+      - m_Target: {fileID: 4641416674568261563}
+        m_TargetAssemblyTypeName: EquipSlot, Assembly-CSharp
+        m_MethodName: UnequipButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

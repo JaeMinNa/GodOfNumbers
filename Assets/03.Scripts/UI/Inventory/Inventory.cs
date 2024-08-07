@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
         SetInventory();
     }
 
-    private void SetInventory()
+    public void SetInventory()
     {
         CountText();
 
