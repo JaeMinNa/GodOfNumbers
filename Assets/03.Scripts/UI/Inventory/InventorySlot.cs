@@ -43,6 +43,8 @@ public class InventorySlot : MonoBehaviour
                         break;
                     }
                 }
+
+                GameManager.I.DataManager.DataSave();
             }
         }
         else

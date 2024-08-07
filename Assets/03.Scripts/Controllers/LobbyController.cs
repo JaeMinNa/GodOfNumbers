@@ -20,4 +20,12 @@ public class LobbyController : MonoBehaviour
         _inventory.SetActive(false);
     }
     #endregion
+
+    #region GameStart
+    public void GameStartButton()
+    {
+        GameManager.I.SoundManager.StartSFX("ClickButton");
+        GameManager.I.ScenesManager.LoadScene("GameScene");
+    }
+    #endregion
 }

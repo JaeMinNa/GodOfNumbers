@@ -20,8 +20,7 @@ public class EquipSlot : MonoBehaviour
 
     public void UnequipButton()
     {
-        GameManager.I.DataManager.GameData.EquipNumbers[_slotNum] = -1;
-
+        GameManager.I.SoundManager.StartSFX("ClickButton");
         int[] array = new int[5];
         int count = 0;
         GameManager.I.DataManager.GameData.EquipNumbers[_slotNum] = -1;
@@ -42,6 +41,7 @@ public class EquipSlot : MonoBehaviour
 
         GameManager.I.DataManager.GameData.EquipNumbers = array;
         _inventory.SetInventory();
+        GameManager.I.DataManager.DataSave();
     }
 
     public void ShowEquipNumber()
