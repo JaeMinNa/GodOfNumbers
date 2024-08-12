@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Shop : MonoBehaviour
     [SerializeField] private int _coin10;
     [SerializeField] private GameObject _completePanel;
     [SerializeField] private TMP_Text _numberText;
+    [SerializeField] private Image _numberImage;
     [SerializeField] private TMP_Text _newNumberText;
     [SerializeField] private TMP_Text _originNumberText;
     private int _count;
@@ -61,6 +63,7 @@ public class Shop : MonoBehaviour
             {
                 _originNumberText.gameObject.SetActive(true);
                 _numberText.text = value.ToString();
+                SetNumberColor(value);
                 break;
             }
             else
@@ -68,6 +71,7 @@ public class Shop : MonoBehaviour
                 _newNumberText.gameObject.SetActive(true);
                 GameManager.I.DataManager.GameData.InventoryNumbers[value] = true;
                 _numberText.text = value.ToString();
+                SetNumberColor(value);
                 break;
             }
 
@@ -85,5 +89,14 @@ public class Shop : MonoBehaviour
 
         if (count > 0) BuyNumberButton(count);
         else GameManager.I.SoundManager.StartSFX("ClickButton");
+    }
+
+    private void SetNumberColor(int num)
+    {
+        if (num == 0) _numberImage.color = new Color(219 / 255f, 128 / 255f, 110 / 255f, 255 / 255f);
+        else if (num >= 10 && num <= 19) _numberImage.color = new Color(156 / 255f, 221 / 255f, 122 / 255f, 255 / 255f);
+        else if (num >= 20 && num <= 29) _numberImage.color = new Color(219 / 255f, 221 / 255f, 122 / 255f, 255 / 255f);
+        else if (num >= 30 && num <= 39) _numberImage.color = new Color(122 / 255f, 124 / 255f, 221 / 255f, 255 / 255f);
+        else if (num >= 40 && num <= 49) _numberImage.color = new Color(217 / 255f, 122 / 255f, 221 / 255f, 255 / 255f);
     }
 }

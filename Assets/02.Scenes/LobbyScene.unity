@@ -16397,6 +16397,7 @@ MonoBehaviour:
   _coin10: 90000
   _completePanel: {fileID: 2168394060241511484}
   _numberText: {fileID: 1391664361}
+  _numberImage: {fileID: 2093116195}
   _newNumberText: {fileID: 2168394060747566696}
   _originNumberText: {fileID: 2106770063}
 --- !u!114 &3245824006257914758
