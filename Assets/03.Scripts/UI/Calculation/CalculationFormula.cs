@@ -38,6 +38,8 @@ public class CalculationFormula : MonoBehaviour
         _numberFramesCount = _numberFrames.transform.childCount;
         _calculationsCount = _calculations.transform.childCount;
         _fillNumberFrames = 0;
+        _normalNumberCount = 0;
+        _equipNumberCount = 0;
         ResetNumberFrames();
         RandomCalculations();
     }
@@ -67,6 +69,8 @@ public class CalculationFormula : MonoBehaviour
     {
         ResetNumberFrames();
         _fillNumberFrames = 0;
+        _normalNumberCount = 0;
+        _equipNumberCount = 0;
     }
 
     public void CalculateNumber()
