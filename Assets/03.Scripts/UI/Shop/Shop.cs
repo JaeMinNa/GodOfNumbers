@@ -21,11 +21,6 @@ public class Shop : MonoBehaviour
         _lobbyController = GameObject.FindWithTag("LobbyController").GetComponent<LobbyController>();
     }
 
-    private void Update()
-    {
-        Debug.Log(_count);
-    }
-
     public void BuyNumberButton(int count)
     {
         if (count == 1)

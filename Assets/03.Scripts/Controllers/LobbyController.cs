@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class LobbyController : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private TMP_Text _coinText;
+    [SerializeField] private TMP_Text _userNameText;
+    [SerializeField] private Sprite[] _userImages;
+    [SerializeField] private Image _userImage;
+    [SerializeField] private Image _settingsUserImage;
 
     [Header("Inventory")]
     [SerializeField] private GameObject _inventory;
@@ -14,15 +19,33 @@ public class LobbyController : MonoBehaviour
     [Header("Shop")]
     [SerializeField] private GameObject _shop;
 
+    [Header("GameSettings")]
+    [SerializeField] private GameObject _settings;
+    [SerializeField] private TMP_Text _settingsUserNameText;
+
     private void Start()
     {
         SetCoin();
+        SetUserName();
+        SetUserImage();
     }
 
     #region UI
     public void SetCoin()
     {
         _coinText.text = GameManager.I.DataManager.GameData.Coin.ToString();
+    }
+
+    public void SetUserName()
+    {
+        _userNameText.text = GameManager.I.DataManager.GameData.UserName;
+        _settingsUserNameText.text = GameManager.I.DataManager.GameData.UserName;
+    }
+
+    public void SetUserImage()
+    {
+        _userImage.sprite = _userImages[GameManager.I.DataManager.GameData.Image];
+        _settingsUserImage.sprite = _userImages[GameManager.I.DataManager.GameData.Image];
     }
     #endregion
 
@@ -59,6 +82,20 @@ public class LobbyController : MonoBehaviour
     {
         GameManager.I.SoundManager.StartSFX("ClickButton");
         GameManager.I.ScenesManager.LoadScene("GameScene");
+    }
+    #endregion
+
+    #region GameSettings
+    public void SettingsActive()
+    {
+        GameManager.I.SoundManager.StartSFX("ChangeButton");
+        _settings.SetActive(true);
+    }
+
+    public void SettingsInactive()
+    {
+        GameManager.I.SoundManager.StartSFX("ClickButton");
+        _settings.SetActive(false);
     }
     #endregion
 }
