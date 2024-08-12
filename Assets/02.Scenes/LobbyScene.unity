@@ -668,7 +668,7 @@ AudioSource:
   m_GameObject: {fileID: 56204973}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6327992026243036042, guid: ef0f8596bcec1424dabf4535e2832be8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -8299,7 +8299,7 @@ AudioSource:
   m_GameObject: {fileID: 1104395627}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6327992026243036042, guid: ef0f8596bcec1424dabf4535e2832be8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -8412,7 +8412,7 @@ AudioSource:
   m_GameObject: {fileID: 1110543833}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6327992026243036042, guid: ef0f8596bcec1424dabf4535e2832be8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -9569,7 +9569,7 @@ AudioSource:
   m_GameObject: {fileID: 1296604568}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6327992026243036042, guid: ef0f8596bcec1424dabf4535e2832be8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -15247,7 +15247,7 @@ AudioSource:
   m_GameObject: {fileID: 1947651030}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -6141857617429098871, guid: ef0f8596bcec1424dabf4535e2832be8, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -29180,8 +29180,8 @@ RectTransform:
   - {fileID: 4586036461991866017}
   m_Father: {fileID: 4586036462757379230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.303, y: 0}
-  m_AnchorMax: {x: 0.303, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 677.8553, y: 5.7}
   m_SizeDelta: {x: 600, y: -12.6}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -29388,7 +29388,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.601
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -29955,13 +29955,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 4586036461388899241}
   m_HandleRect: {fileID: 4586036462747247907}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -40
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0.601
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4586036461976894872}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: SFXControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &4586036461665194721
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30351,6 +30363,9 @@ MonoBehaviour:
   - {fileID: 374618862}
   _userImagePanel: {fileID: 4037910735421112900}
   _deletePanel: {fileID: 482160811}
+  _audioMixer: {fileID: 24100000, guid: ef0f8596bcec1424dabf4535e2832be8, type: 2}
+  _sfxSlider: {fileID: 4586036461665194720}
+  _bgmSlider: {fileID: 4586036462757379229}
 --- !u!114 &4586036461991866016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30902,8 +30917,8 @@ RectTransform:
   - {fileID: 4586036461442007802}
   m_Father: {fileID: 4586036461665194723}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.601, y: 0}
-  m_AnchorMax: {x: 0.601, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 677.85535, y: 5.7}
   m_SizeDelta: {x: 600, y: -12.6}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -31007,13 +31022,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 4586036462850560943}
   m_HandleRect: {fileID: 4586036461104026179}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -40
+  m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: 0.303
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4586036461976894872}
+        m_TargetAssemblyTypeName: Settings, Assembly-CSharp
+        m_MethodName: BGMControl
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &4586036462757379230
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31105,7 +31132,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.303
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class Settings : MonoBehaviour
 {
@@ -17,6 +18,12 @@ public class Settings : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] GameObject _deletePanel;
+
+    [Header("Auido")]
+    [SerializeField] private AudioMixer _audioMixer;
+    [SerializeField] private Slider _sfxSlider;
+    [SerializeField] private Slider _bgmSlider;
+
 
     private LobbyController _lobbyController;
 
@@ -110,6 +117,46 @@ public class Settings : MonoBehaviour
         #else
         Application.Quit();
         #endif
+    }
+    #endregion
+
+    #region Auido
+    public void SFXControl()
+    {
+        float sound = _sfxSlider.value;
+        PlayerPrefs.SetFloat("SFX", sound);
+
+        if (sound == -40f)
+        {
+            _audioMixer.SetFloat("SFX", -80f);
+        }
+        else
+        {
+            _audioMixer.SetFloat("SFX", sound);
+        }
+    }
+
+    public void BGMControl()
+    {
+        float sound = _bgmSlider.value;
+        PlayerPrefs.SetFloat("BGM", sound);
+
+        if (sound == -40f)
+        {
+            _audioMixer.SetFloat("BGM", -80f);
+        }
+        else
+        {
+            _audioMixer.SetFloat("BGM", sound);
+        }
+    }
+
+    public void SetAuido()
+    {
+        _sfxSlider.value = PlayerPrefs.GetFloat("SFX");
+        _bgmSlider.value = PlayerPrefs.GetFloat("BGM");
+        SFXControl();
+        BGMControl();
     }
     #endregion
 }

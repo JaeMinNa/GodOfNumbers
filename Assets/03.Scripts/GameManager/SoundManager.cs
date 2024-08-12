@@ -34,6 +34,8 @@ public class SoundManager : MonoBehaviour
         }
 
         // BGM
+        _bgm.Add("LobbyBGM", Resources.Load<AudioClip>("Sound/BGM/BGM_04"));
+        _bgm.Add("GameBGM", Resources.Load<AudioClip>("Sound/BGM/BGM_02"));
 
         // SFX
         _sfx.Add("DestroyLine", Resources.Load<AudioClip>("Sound/SFX/Block/DestroyLine"));

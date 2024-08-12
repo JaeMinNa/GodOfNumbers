@@ -22,12 +22,20 @@ public class LobbyController : MonoBehaviour
     [Header("GameSettings")]
     [SerializeField] private GameObject _settings;
     [SerializeField] private TMP_Text _settingsUserNameText;
+    private Settings _settingsScript;
+
+    private void Awake()
+    {
+        _settingsScript = _settings.GetComponent<Settings>();
+    }
 
     private void Start()
     {
+        GameManager.I.SoundManager.StartBGM("LobbyBGM");
         SetCoin();
         SetUserName();
         SetUserImage();
+        SetAudio();
     }
 
     #region UI
@@ -96,6 +104,11 @@ public class LobbyController : MonoBehaviour
     {
         GameManager.I.SoundManager.StartSFX("ClickButton");
         _settings.SetActive(false);
+    }
+
+    private void SetAudio()
+    {
+        _settingsScript.SetAuido();
     }
     #endregion
 }

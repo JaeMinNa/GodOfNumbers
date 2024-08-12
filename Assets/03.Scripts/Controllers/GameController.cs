@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Audio;
 
 public class GameController : MonoBehaviour
 {
@@ -21,15 +22,20 @@ public class GameController : MonoBehaviour
     public Dictionary<float, GameObject> Blocks;
     public float BlockCreateTime;
 
+    [Header("GameSettings")]
+    [SerializeField] private AudioMixer _audioMixer;
+
     private void Awake()
     {
         Blocks = new Dictionary<float, GameObject>();
         _objectPool = GameObject.FindWithTag("ObjectPool").GetComponent<ObjectPoolController>();
         ChangeCount = 2;
+        SetAudio();
     }
 
     private void Start()
     {
+        GameManager.I.SoundManager.StartBGM("GameBGM");
         SetactiveCalculationFormula();
         StartCoroutine(COCreateBlock());
         _score = 0;
@@ -132,6 +138,32 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 1f;
+    }
+    #endregion
+
+    #region GameSettings
+    private void SetAudio()
+    {
+        float sfx = PlayerPrefs.GetFloat("SFX");
+        float bgm = PlayerPrefs.GetFloat("BGM");
+
+        if (sfx == -40f)
+        {
+            _audioMixer.SetFloat("SFX", -80f);
+        }
+        else
+        {
+            _audioMixer.SetFloat("SFX", sfx);
+        }
+
+        if (bgm == -40f)
+        {
+            _audioMixer.SetFloat("BGM", -80f);
+        }
+        else
+        {
+            _audioMixer.SetFloat("BGM", bgm);
+        }
     }
     #endregion
 }
