@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] GameObject _calculationFormulaes;
     private ObjectPoolController _objectPool;
+    private float _playTime;
 
     [Header("GameData")]
     public int MaxNumber;
@@ -22,7 +23,15 @@ public class GameController : MonoBehaviour
     public Dictionary<float, GameObject> Blocks;
     public float BlockCreateTime;
 
-    [Header("GameSettings")]
+    [Header("Complete")]
+    [SerializeField] private GameObject _completePanel;
+    [SerializeField] private TMP_Text _completeScoreText;
+    [SerializeField] private GameObject _bestLabel;
+    [SerializeField] private TMP_Text _completeTime;
+    [SerializeField] private TMP_Text _completeCoinText;
+    private bool _finishGame;
+
+    [Header("Audio")]
     [SerializeField] private AudioMixer _audioMixer;
 
     private void Awake()
@@ -30,7 +39,6 @@ public class GameController : MonoBehaviour
         Blocks = new Dictionary<float, GameObject>();
         _objectPool = GameObject.FindWithTag("ObjectPool").GetComponent<ObjectPoolController>();
         ChangeCount = 2;
-        SetAudio();
     }
 
     private void Start()
@@ -40,14 +48,25 @@ public class GameController : MonoBehaviour
         StartCoroutine(COCreateBlock());
         _score = 0;
         Hp = 3;
+        _playTime = 0f;
+        _finishGame = false;
         GetScore(0);
         GetHp(0);
+        SetAudio();
     }
 
     private void Update()
     {
         if (_score < 4000) MaxNumber = 10;
         else MaxNumber = 15;
+
+        if (Hp < 1 && !_finishGame)
+        {
+            _finishGame = true;
+            FinishGame();
+        }
+
+        PlayTime();
     }
 
     #region CalculationFormula
@@ -139,9 +158,14 @@ public class GameController : MonoBehaviour
         yield return new WaitForSecondsRealtime(3f);
         Time.timeScale = 1f;
     }
+
+    private void PlayTime()
+    {
+        _playTime += Time.unscaledDeltaTime;
+    }
     #endregion
 
-    #region GameSettings
+    #region Audio
     private void SetAudio()
     {
         float sfx = PlayerPrefs.GetFloat("SFX");
@@ -164,6 +188,43 @@ public class GameController : MonoBehaviour
         {
             _audioMixer.SetFloat("BGM", bgm);
         }
+    }
+    #endregion
+
+    #region Complete
+    public void HomeButton()
+    {
+        GameManager.I.SoundManager.StartSFX("ClickButton");
+        GameManager.I.ScenesManager.LoadScene("LobbyScene");
+    }
+
+    private void FinishGame()
+    {
+        GameManager.I.SoundManager.StopBGM();
+        Time.timeScale = 0f;
+        _bestLabel.SetActive(false);
+        int coin = _score + ((int)(_playTime / 60) * 1000);
+        _completeScoreText.text = _score.ToString();
+        _completeTime.text = ConvertSecondsToTimeString(_playTime);
+        _completeCoinText.text = coin.ToString();
+        
+        if(_score >= GameManager.I.DataManager.GameData.BestScore)
+        {
+            _bestLabel.SetActive(true);
+            GameManager.I.DataManager.GameData.BestScore = _score;
+        }
+        GameManager.I.DataManager.GameData.Coin += coin;
+
+        _completePanel.SetActive(true);
+        GameManager.I.DataManager.DataSave();
+    }
+
+    private string ConvertSecondsToTimeString(float seconds)
+    {
+        int minutes = Mathf.FloorToInt(seconds / 60);
+        int remainingSeconds = Mathf.RoundToInt(seconds % 60);
+
+        return string.Format("{0:00}:{1:00}", minutes, remainingSeconds);
     }
     #endregion
 }

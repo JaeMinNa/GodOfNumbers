@@ -67,5 +67,6 @@ public class DataManager : MonoBehaviour
     {
         // 데이터 삭제
         ES3.DeleteFile("SaveFile.txt"); // 저장 파일 이름
+        PlayerPrefs.DeleteAll();
     }
 }
